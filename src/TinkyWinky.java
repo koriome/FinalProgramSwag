@@ -15,6 +15,7 @@ public class TinkyWinky {
         Scanner shoot = new Scanner(System.in);
         System.out.println("Enter the name of your file:");
         String peanutButter = shoot.next();
+        shoot.close();
         swag.playTextPredictor(peanutButter);
     }
 
@@ -42,6 +43,12 @@ public class TinkyWinky {
         return wow;
     }
 
+    /**
+     * Takes every prediction and has the user input a word for them
+     * replaces prediction with word
+     * @param deez , our arraylist of all the words in the file
+     * @return Arraylist, the file with all predictions filled in
+     */
     public ArrayList predictionInputFill(ArrayList deez){
         Scanner babyMario = new Scanner(System.in);
         for(int i = 0; i < deez.size(); i++){
@@ -52,6 +59,7 @@ public class TinkyWinky {
                 deez.set(i, sillyMode);
             }
         }
+        babyMario.close();
         return deez;
     }
 
