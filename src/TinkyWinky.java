@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.PrintWriter;
 
 /**
- * ad-libs but cooler
+ * mad-libs but the gang made it in java and it's cooler
  * @author David Miller, Andrew Brodowski, Joey Graves
  */
 public class TinkyWinky {
@@ -61,27 +61,36 @@ public class TinkyWinky {
         return deez;
     }
 
+    /**
+     * outputs final story to console and a new file ending in .out
+     * @param jelly Arraylist of all the words in the file
+     * @param guh String, name of the file
+     */
     public void shareFinalResult(ArrayList jelly, String guh){
         String goofyOutPut =guh+".out";
         File theFileOut = new File(goofyOutPut);
         Scanner scan = null;
         PrintWriter ginger = null;
-
+        String enrollment="";
         try{
             ginger=new PrintWriter(goofyOutPut);
             scan = new Scanner(goofyOutPut);
 
             for(int i = 0; i<jelly.size(); i++){
-                String nextWord = (String) jelly.get(i);
-                if(/* + nextWord.length() < 40*/){
-                    ginger.print(nextWord);
-                    System.out.println(nextWord);
-                }else{
-                    ginger.print("\n" + nextWord);
-                    System.out.println("\n" + nextWord);
+                String nextWord = (String) jelly.get(i) + " ";
+                if(enrollment.length() + nextWord.length() <= 40){
+                    enrollment += nextWord;
+                }
+                else{
+                    System.out.println(enrollment);
+                    ginger.println(enrollment);
+                    enrollment = "";
+                    enrollment += nextWord;
                 }
 
             }
+            System.out.println(enrollment);
+            ginger.println(enrollment);
         }catch(FileNotFoundException bruh){
             System.out.println("file not found buddy");
             bruh.printStackTrace();
@@ -93,6 +102,10 @@ public class TinkyWinky {
 
     }
 
+    /**
+     * initiates all the other methods in order to run the game
+     * @param yuh String, the filename
+     */
     public void playTextPredictor(String yuh /*filename*/){
         ArrayList<String> johnin = loadFillableMessage(yuh);
         johnin = predictionInputFill(johnin);
