@@ -2,7 +2,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
-
+import java.io.PrintWriter;
 
 /**
  * ad-libs but cooler
@@ -15,7 +15,6 @@ public class TinkyWinky {
         Scanner shoot = new Scanner(System.in);
         System.out.println("Enter the name of your file:");
         String peanutButter = shoot.next();
-        shoot.close();
         swag.playTextPredictor(peanutButter);
     }
 
@@ -55,22 +54,49 @@ public class TinkyWinky {
             String doctorMan = (String) deez.get(i);
             if (doctorMan.charAt(0) == '[' && doctorMan.charAt(doctorMan.length() - 1) == ']'){
                 System.out.printf("Please enter a/an %s:", doctorMan.substring(1, doctorMan.length()-1));
-                String sillyMode = babyMario.nextLine();
+                String sillyMode = babyMario.next();
                 deez.set(i, sillyMode);
             }
         }
-        babyMario.close();
         return deez;
     }
 
-    public void shareFinalResult(ArrayList jelly){
+    public void shareFinalResult(ArrayList jelly, String guh){
+        String goofyOutPut =guh+".out";
+        File theFileOut = new File(goofyOutPut);
+        Scanner scan = null;
+        PrintWriter ginger = null;
+
+        try{
+            ginger=new PrintWriter(goofyOutPut);
+            scan = new Scanner(goofyOutPut);
+
+            for(int i = 0; i<jelly.size(); i++){
+                String nextWord = (String) jelly.get(i);
+                if(/* + nextWord.length() < 40*/){
+                    ginger.print(nextWord);
+                    System.out.println(nextWord);
+                }else{
+                    ginger.print("\n" + nextWord);
+                    System.out.println("\n" + nextWord);
+                }
+
+            }
+        }catch(FileNotFoundException bruh){
+            System.out.println("file not found buddy");
+            bruh.printStackTrace();
+        }finally{
+            ginger.close();
+            scan.close();
+        }
+
 
     }
 
     public void playTextPredictor(String yuh /*filename*/){
         ArrayList<String> johnin = loadFillableMessage(yuh);
         johnin = predictionInputFill(johnin);
-        System.out.println(johnin);
+        shareFinalResult(johnin, yuh);
     }
 
 }
