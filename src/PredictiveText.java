@@ -8,10 +8,10 @@ import java.io.PrintWriter;
  * mad-libs but the gang made it in java and it's cooler
  * @author David Miller, Andrew Brodowski, Joey Graves
  */
-public class TinkyWinky {
+public class PredictiveText {
 
     public static void main(String[] args) {
-        TinkyWinky swag = new TinkyWinky();
+        PredictiveText swag = new PredictiveText();
         Scanner shoot = new Scanner(System.in);
         System.out.println("Enter the name of your file:");
         String peanutButter = shoot.next();
